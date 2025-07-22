@@ -11,6 +11,8 @@ npm install lapjv-js
 # Example Usage
 ```javascript
 import { lapjv } from 'lapjv-js';
+// or
+const {lapjv} = require('lapjv-js')
 
 const costMatrix = [
     [1.0, 2.0, 3.0],
