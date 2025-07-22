@@ -25,7 +25,7 @@ lapjv(costMatrix).then(({ cost, x, y }) => {
 });
 
 ```
-# Command to generate web assembly
+# Build WebAssembly (from C++ source)
 
 ```command
 emcc lapjv.cpp -o lapjv.js \
@@ -36,3 +36,6 @@ emcc lapjv.cpp -o lapjv.js \
     -s ALLOW_MEMORY_GROWTH=1 \
     -s EXPORTED_RUNTIME_METHODS="['cwrap', 'getValue', 'setValue','HEAPF64']"
 ```
+
+# License & Attribution
+This JavaScript port retains the original BSD 2-Clause license. See the `LICENSE` file for details.
