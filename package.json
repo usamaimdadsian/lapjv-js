@@ -14,16 +14,24 @@
     "jest-light-runner": "^0.7.9"
   },
   "keywords": [
-      "lapjv",
-      "LAP",
-      "assignment-problem",
-      "hungarian-algorithm",
-      "wasm",
-      "javascript"
-    ],
+    "lapjv",
+    "LAP",
+    "assignment-problem",
+    "hungarian-algorithm",
+    "wasm",
+    "javascript"
+  ],
   "files": [
     "lapjv-js.js",
     "lapjs.js",
     "lapjv.wasm"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/usamaimdadsian/lapjv-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/usamaimdadsian/lapjv-js/issues"
+  },
+  "homepage": "https://github.com/usamaimdadsian/lapjv-js#readme"
 }
