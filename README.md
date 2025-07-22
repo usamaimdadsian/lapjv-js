@@ -1,5 +1,5 @@
 # Description
-A JavaScript (WASM-backed) implementation of the [LAPJV algorithm](https://github.com/gatagat/lap), ported from the Python `lap` package. It solves the **linear assignment problem** (also known as the **minimum cost bipartite matching problem**) efficiently.
+A JavaScript and Typescript (WASM-backed) implementation of the [LAPJV algorithm](https://github.com/gatagat/lap), ported from the Python `lap` package. It solves the **linear assignment problem** (also known as the **minimum cost bipartite matching problem**) efficiently.
 
 
 ## 📦 Installation
@@ -10,7 +10,7 @@ npm install lapjv-js
 
 # Example Usage
 ```javascript
-import { lapjv } from './lapjv-js.js';
+import { lapjv } from 'lapjv-js';
 
 const costMatrix = [
     [1.0, 2.0, 3.0],
@@ -18,24 +18,15 @@ const costMatrix = [
     [3.0, 6.0, 9.0]
 ];
 
-lapjv(costMatrix).then(({ cost, x, y }) => {
+lapjv(costMatrix, {
+    extendCost: true,
+    costLimit: 0.85,
+}).then(({ cost, x, y }) => {
     console.log("Assignment cost:", cost);
     console.log("x:", x);
     console.log("y:", y);
 });
 
 ```
-# Build WebAssembly (from C++ source)
-
-```command
-emcc lapjv.cpp -o lapjv.js \
-    -s MODULARIZE=1 \
-    -s EXPORT_ES6=1 \
-    -s EXPORT_NAME="createLapjvModule" \
-    -s EXPORTED_FUNCTIONS="['_lapjv_internal','_malloc', '_free']" \
-    -s ALLOW_MEMORY_GROWTH=1 \
-    -s EXPORTED_RUNTIME_METHODS="['cwrap', 'getValue', 'setValue','HEAPF64']"
-```
-
 # License & Attribution
 This JavaScript port retains the original BSD 2-Clause license. See the `LICENSE` file for details.

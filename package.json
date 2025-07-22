@@ -1,17 +1,32 @@
 {
   "name": "lapjv-js",
-  "version": "1.0.2",
-  "description": "JavaScript implementation of LAPJV algorithm (ported from Python's LAP).",
+  "version": "1.0.3",
   "license": "ISC",
   "author": "Usama Imdad Sian",
+  "description": "A JS/TS implementation of LAPJV algorithm (ported from Python's LAP).",
   "type": "module",
-  "main": "lapjv-js.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "exports": {
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js"
+  },
+  "types": "dist/esm/index.d.ts",
   "scripts": {
-    "test": "jest"
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:wasm_esm": "emcc src/wasm/lapjv.cpp -o src/wasm/lapjv.js -s MODULARIZE=1 -s EXPORT_ES6=1 -s EXPORT_NAME=\"createLapjvModule\" -s EXPORTED_FUNCTIONS=\"['_lapjv_internal','_malloc', '_free']\" -s ALLOW_MEMORY_GROWTH=1 -s EXPORTED_RUNTIME_METHODS=\"['cwrap', 'getValue', 'setValue','HEAPF64','HEAP32']\"",
+    "build:wasm_cjs": "emcc src/wasm/lapjv.cpp -o src/wasm/lapjv.cjs.js -s MODULARIZE=1 -s EXPORT_NAME=\"createLapjvModule\" -s EXPORTED_FUNCTIONS=\"['_lapjv_internal','_malloc', '_free']\" -s ALLOW_MEMORY_GROWTH=1 -s EXPORTED_RUNTIME_METHODS=\"['cwrap', 'getValue', 'setValue','HEAPF64','HEAP32']\"",
+    "build:wasm": "npm run build:wasm_esm && npm run build:wasm_cjs",
+    "build": "npm run build:esm && npm run build:cjs && mkdir -p dist/esm/wasm dist/cjs/wasm && cp src/wasm/lapjv.wasm dist/esm/wasm/ && cp src/wasm/lapjv.js dist/esm/wasm/ && cp src/wasm/lapjv.cjs.wasm dist/cjs/wasm/ && cp src/wasm/lapjv.cjs.js dist/cjs/wasm/",
+    "test": "node --experimental-vm-modules ./node_modules/.bin/jest",
+    "prepare": "npm run build"
   },
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "jest": "^30.0.5",
-    "jest-light-runner": "^0.7.9"
+    "ts-jest": "^29.4.0",
+    "typescript": "^5.8.3"
   },
   "keywords": [
     "lapjv",
@@ -20,11 +35,6 @@
     "hungarian-algorithm",
     "wasm",
     "javascript"
-  ],
-  "files": [
-    "lapjv-js.js",
-    "lapjs.js",
-    "lapjv.wasm"
   ],
   "repository": {
     "type": "git",
