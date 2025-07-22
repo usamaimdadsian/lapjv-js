@@ -1,0 +1,29 @@
+{
+  "name": "lapjv-js",
+  "version": "1.0.2",
+  "description": "JavaScript implementation of LAPJV algorithm (ported from Python's LAP).",
+  "license": "ISC",
+  "author": "Usama Imdad Sian",
+  "type": "module",
+  "main": "lapjv-js.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^30.0.5",
+    "jest-light-runner": "^0.7.9"
+  },
+  "keywords": [
+      "lapjv",
+      "LAP",
+      "assignment-problem",
+      "hungarian-algorithm",
+      "wasm",
+      "javascript"
+    ],
+  "files": [
+    "lapjv-js.js",
+    "lapjs.js",
+    "lapjv.wasm"
+  ]
+}
