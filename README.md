@@ -32,6 +32,7 @@ lapjv(costMatrix, {
 
 <details><summary>More details</summary>
 The function `lapjv` returns the assignment cost `cost` and two arrays `x` and `y`. If cost matrix `C` has shape NxM, then `x` is a size-N array specifying to which column each row is assigned, and `y` is a size-M array specifying to which row each column is assigned. For example, an output of `x = [1, 0]` indicates that row 0 is assigned to column 1 and row 1 is assigned to column 0. Similarly, an output of `x = [2, 1, 0]` indicates that row 0 is assigned to column 2, row 1 is assigned to column 1, and row 2 is assigned to column 0.
+</details>
 
 ## YouTube Tutorial
 [![Watch the video](https://img.youtube.com/vi/kjih-Dcn6-4/hqdefault.jpg)](https://www.youtube.com/watch?v=kjih-Dcn6-4)
